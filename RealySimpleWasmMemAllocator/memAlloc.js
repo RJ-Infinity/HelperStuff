@@ -1,4 +1,4 @@
-// V1.0 (01 05 2023)
+// V1.1 (03 05 2023)
 
 /* (c) RJ_Infinity (https://github.com/RJ-Infinity)
 i cant be borthered to find a proper license so just be sensible when using it and give me credit thanks
@@ -10,6 +10,9 @@ class memAlloc{
 	freeMem={};
 	setMemory(memory){this.memory = memory;}
 	alloc(size){
+		// size must be 4 byte alligned
+		size += 4-(size%4)
+
 		//TODO: make the allocator detect if the free memory is too small but at the
 		// end of the memory buffer and use this but extend the memory so it fits
 		for (const loc of Object.keys(this.freeMem)) {
